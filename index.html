@@ -169,7 +169,123 @@
         </div>
       </div>
     </section>
+<!-- ========================
+   ADVANCED CHEMISTRY SECTION
+========================= -->
+<section id="chemistry" class="section green-theme">
+    <h2 class="section-title">🌿 환경을 바꾸는 화학 기술</h2>
+    <p class="section-desc">
+        지속 가능한 미래를 만들기 위해 화학은 핵심적인 역할을 합니다.  
+        오염물질의 분석부터 친환경 소재 개발, 탄소 저감 기술까지 —  
+        화학은 환경 문제의 원인을 밝히고 해결책을 설계하는 과학입니다.
+    </p>
 
+    <div class="chem-grid">
+        <div class="chem-card">
+            <h3>🔬 대기 오염 화학 분석</h3>
+            <p>NOx, SO₂, O₃ 등의 대기오염 물질은 라디칼 반응을 통해 2차 오염을 일으킵니다.  
+            예: NO₂ + hv → NO + O → O₃ 생성</p>
+            <p>이 반응을 모니터링하는 센서 기술은 환경 화학의 핵심입니다.</p>
+        </div>
+
+        <div class="chem-card">
+            <h3>💧 수질 분석 기술</h3>
+            <p>전기화학 센서를 이용한 중금속 분석 (Pb²⁺, Cd²⁺ 등)은  
+            환경 보건 안전의 기준을 결정하는 중요한 데이터입니다.</p>
+            <p>pH–용존산소(DO) 변화는 생태계 건강 상태를 직접 반영합니다.</p>
+        </div>
+
+        <div class="chem-card">
+            <h3>🌱 친환경 고분자 기술</h3>
+            <p>PLA, PHAs 같은 생분해성 고분자는 플라스틱 문제의 대안입니다.</p>
+            <p>고분자 분해 메커니즘(가수분해, 광분해)을 기반으로 실험적 설계가 가능합니다.</p>
+        </div>
+
+        <div class="chem-card">
+            <h3>⚡ 탄소 포집·저감(CCS/CCU)</h3>
+            <p>MEA 흡수법, 고체흡착제(ZIF-8, MOF 기반 소재) 등  
+               최신 화학 공정 기술이 탄소중립을 앞당기고 있습니다.</p>
+            <p>화학 반응식 기반 CO₂ 포집 효율 계산 모델도 제공 가능합니다.</p>
+        </div>
+    </div>
+</section>
+
+<!-- ========================
+      SIMULATOR UPGRADE
+======================== -->
+<section id="simulator" class="section light-green-theme">
+    <h2 class="section-title">🧪 오염물질 농도 변화 시뮬레이터 (업그레이드)</h2>
+    <p class="section-desc">오염 수치를 조절하면 생태계 반응이 실시간으로 변합니다.</p>
+
+    <div class="sim-wrap">
+        <label>NOx 농도(ppm):</label>
+        <input type="range" id="nox" min="0" max="200" value="30">
+
+        <label>미세먼지(PM2.5):</label>
+        <input type="range" id="pm" min="0" max="150" value="20">
+
+        <canvas id="ecoCanvas"></canvas>
+    </div>
+</section>
+
+<script>
+const canvas = document.getElementById("ecoCanvas");
+const ctx = canvas.getContext("2d");
+canvas.width = 500;
+canvas.height = 250;
+
+function updateEco() {
+    const nox = document.getElementById("nox").value;
+    const pm = document.getElementById("pm").value;
+
+    const health = 100 - (nox * 0.2 + pm * 0.3);
+
+    ctx.clearRect(0,0,canvas.width,canvas.height);
+
+    ctx.fillStyle = health > 70 ? "#7ed957" : health > 40 ? "#c9d957" : "#d97e57";
+    ctx.fillRect(0,0,canvas.width,canvas.height);
+
+    ctx.fillStyle = "#1b3d1b";
+    ctx.font = "20px Arial";
+    ctx.fillText("생태 건강 지수: " + Math.max(0, Math.round(health)), 20, 40);
+}
+
+document.getElementById("nox").oninput = updateEco;
+document.getElementById("pm").oninput = updateEco;
+updateEco();
+</script>
+
+<!-- ========================
+        REVENUE SECTION
+========================= -->
+<section id="revenue" class="section dark-green-theme">
+    <h2 class="section-title">💰 지속 가능한 수익 모델</h2>
+
+    <div class="revenue-grid">
+
+        <div class="rev-card">
+            <h3>📊 프리미엄 분석 리포트</h3>
+            <p>고급 화학 분석 기반 ‘지역별 환경 리포트 판매’  
+               (학교·동아리·환경 단체 구매 대상)</p>
+        </div>
+
+        <div class="rev-card">
+            <h3>🧪 실험 키트 판매</h3>
+            <p>pH 측정 세트, 미니 수질 분석 키트 등  
+               화학 학습용 키트 판매 페이지 연결 가능</p>
+        </div>
+
+        <div class="rev-card">
+            <h3>🌍 탄소 발자국 계산기 광고</h3>
+            <p>친환경 기업·교육 플랫폼 광고 연동 → 자동 수익</p>
+        </div>
+
+        <div class="rev-card">
+            <h3>📚 교육 영상/강의 구독</h3>
+            <p>화학 + 환경 융합 콘텐츠를 유료 구독 모델로 운영 가능</p>
+        </div>
+    </div>
+</section>
     <!-- PRODUCTS / 유료 아이템 (수익 모델) -->
     <section id="products" class="card">
       <h2>2) 유료 서비스 & 수익 모델</h2>
